@@ -20,10 +20,14 @@ PWD:=$(shell pwd)
 all: clean init
 
 	mkdir --parents $(PWD)/build/Boilerplate.AppDir
-	$(PWD)/bin/Apprepo.AppImage --destination=$(PWD)/build appdir boilerplate teams \
+	$(PWD)/bin/Apprepo.AppImage --destination=$(PWD)/build appdir boilerplate \
 	    libgdk-pixbuf2.0-0 libatk1.0-0 libatk-bridge2.0-0 libgtk2.0-0 libmlt6 libmlt-data  \
 	    libreadline8 at-spi2-core libpango-1.0-0 libgtk-3-0 libgirepository-1.0-1 \
-		libwayland-cursor0 libselinux1 python3-mlt python3-distutils 
+		libwayland-cursor0 libselinux1 python3-mlt python3-distutils \
+		python-gi python-dbus	ffmpeg python-gi-cairo	python-numpy \
+		python-pil librsvg2-common gmic gir1.2-glib-2.0	gir1.2-gtk-3.0 \
+		gir1.2-pango-1.0 gir1.2-gdkpixbuf-2.0 python-dbus \
+		swh-plugins	frei0r-plugins
 
 	wget --output-document="$(PWD)/build/build.deb" https://github.com/jliljebl/flowblade/releases/download/v2.8.0.2/flowblade-2.8.0.2-1_all.deb
 	dpkg -x $(PWD)/build/build.deb $(PWD)/build
@@ -32,9 +36,9 @@ all: clean init
 	cp --force --recursive $(PWD)/build/usr/share/*			$(PWD)/build/Boilerplate.AppDir/share/
 	cp --force --recursive $(PWD)/build/usr/bin/*			$(PWD)/build/Boilerplate.AppDir/bin/
 
-	echo ''                                                 >> $(PWD)/build/Boilerplate.AppDir/AppRun
-	echo ''                                                 >> $(PWD)/build/Boilerplate.AppDir/AppRun
-	echo 'exec $${APPDIR}/bin/flowblade $${@}'              >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo ''                                                         >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo ''                                                         >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo '$${APPDIR}/bin/python3.8 $${APPDIR}/bin/flowblade $${@}'  >> $(PWD)/build/Boilerplate.AppDir/AppRun
 		
 	rm --force $(PWD)/build/Boilerplate.AppDir/*.desktop              || true
 	rm --force $(PWD)/build/Boilerplate.AppDir/*.svg                  || true

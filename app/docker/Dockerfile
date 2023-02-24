@@ -17,4 +17,4 @@ RUN apt-get -y update && apt-get -y install apt-utils
 RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get install -y kmod make gcc wget
 RUN apt-get install -y file curl wget unzip
-RUN apt-get install -y fuse
+RUN apt-get install -y fuse python3-mlt
