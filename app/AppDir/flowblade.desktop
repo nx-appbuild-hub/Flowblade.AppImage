@@ -1,8 +1,12 @@
 [Desktop Entry]
 Name=Flowblade Movie Editor
+Name[en_US]=Flowblade
+Name[ru_RU]=Flowblade
 GenericName=Movie Editor
+GenericName[ru_RU]=Видеоредактор
 X-GNOME-FullName=Flowblade Movie Editor
 Comment=Edit media to create movies
+Comment[ru_RU]=Редактируйте медиафайлы создавая фильмы
 Exec=GDK_BACKEND=x11 AppRun %f
 Terminal=false
 Type=Application
@@ -10,4 +14,3 @@ Icon=flowblade
 Categories=GNOME;GTK;AudioVideo;AudioVideoEditing;
 MimeType=application/vnd.flowblade-project;
 X-Ubuntu-Gettext-Domain=Flowblade
-Name[en_US]=Flowblade
